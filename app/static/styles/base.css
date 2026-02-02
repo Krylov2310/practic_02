@@ -1,0 +1,350 @@
+/* Базовый сброс отступов и box-sizing */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4f6f9;
+}
+
+/* Фиксированная шапка сверху */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    padding: 12px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Логотип/название в шапке */
+.header-logo {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+/* Контейнер для кнопок в шапке */
+.header-buttons {
+    display: flex;
+    gap: 16px;
+}
+
+/* Стиль кнопок в шапке */
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+}
+
+.btn-info {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+.btn-register {
+    background-color: rgba(255, 255, 255, 0.3);
+    color: white;
+}
+
+.btn-login {
+    background-color: white;
+    color: #667eea;
+    font-weight: 600;
+}
+
+/* Эффекты наведения */
+.btn-info:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.btn-register:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+.btn-login:hover {
+    background-color: #f0f5ff;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(102, 126, 234, 0.2);
+}
+
+/* Основной контейнер страницы (с отступом сверху для шапки) */
+.container {
+    max-width: 800px;
+    margin: 80px auto 40px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Стили для табов (вкладки Вход/Регистрация) */
+.tabs {
+    display: flex;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #eaecef;
+}
+
+.tab {
+    padding: 12px 24px;
+    cursor: pointer;
+    font-weight: 500;
+    color: #6c757d;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.tab.active {
+    color: #667eea;
+    font-weight: 600;
+}
+
+.tab.active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #667eea;
+}
+
+.tab:hover {
+    color: #495057;
+}
+
+/* Формы входа и регистрации */
+.form {
+    display: none;
+}
+
+.form.active {
+    display: block;
+}
+
+.form input {
+    width: 100%;
+    padding: 12px 16px;
+    margin: 10px 0;
+    border: 2px solid #eaecef;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.form input:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+.form button {
+    width: 100%;
+    padding: 14px;
+    background-color: #667eea;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+}
+
+.form button:hover {
+    background-color: #5a67d8;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 15px;
+    }
+
+    .header-logo {
+        margin-bottom: 15px;
+    }
+
+    .header-buttons {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .btn {
+        padding: 10px 15px;
+        font-size: 0.9rem;
+    }
+
+    .container {
+        margin-top: 140px;
+        padding: 15px;
+    }
+}
+
+/* Подвал (footer) */
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px;
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    color: #e2e8f0;
+    border-top: 1px solid #ddd;
+    z-index: 10;
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto 40px;
+}
+
+/* Логотип в подвале */
+.footer-logo h3 {
+    font-size: 1.5rem;
+    margin-bottom: 8px;
+    color: white;
+}
+
+.footer-logo p {
+    color: #94a3b8;
+    font-size: 0.9rem;
+}
+
+/* Блоки ссылок */
+.footer-links,
+.footer-social {
+    min-width: 200px;
+}
+
+.footer-links h4,
+.footer-social h4 {
+    color: white;
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+}
+
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li {
+    margin-bottom: 8px;
+}
+
+.footer-links a {
+    color: #94a3b8;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: white;
+}
+
+/* Соцсети */
+.social-icons {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.social-icons a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background-color: #334155;
+    border-radius: 50%;
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.social-icons a:hover {
+    background-color: #64748b;
+    transform: translateY(-2px);
+}
+
+/* Нижний блок подвала */
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid #334155;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-bottom p {
+    color: #94a3b8;
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+}
+
+.footer-legal {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.footer-legal a {
+    color: #64748b;
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: color 0.3s ease;
+}
+
+.footer-legal a:hover {
+    color: white;
+}
+
+/* Адаптивность для подвала */
+@media (max-width: 768px) {
+.footer-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.footer-logo,
+.footer-links,
+.footer-social {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.social-icons {
+    justify-content: center;
+}
+
+.footer-legal {
+    flex-direction: column;
+    gap: 10px;
+}

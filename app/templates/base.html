@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <div class="header">
+        <div class="header-logo">Мини чат Edison</div>
+    </div>
+    <title>{% block title %}Асинхронный чат-сервер{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="/static/styles/base.css">
+</head>
+<body>
+<!-- Основной контент -->
+<main class="container my-5">
+    {% block content %}
+    <!-- Контент страницы -->
+    {% endblock content %}
+</main>
+<footer class="footer">
+    <div class="footer-bottom">
+        <p>&copy; Synergy University. Все права защищены.</p>
+        <div class="footer-legal">
+            <a href="https://synergyacademy.ru/">Политика конфиденциальности</a>
+            <a href="#">Пользовательское соглашение</a>
+        </div>
+    </div>
+    <script src="/static/js/auth.js"></script>
+</footer>
+</body>
+</html>

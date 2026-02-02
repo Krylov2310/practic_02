@@ -1,0 +1,11 @@
+meta:
+  environment: python
+  toolchain:
+    name: pip
+    version: 3.12
+build:
+  requirementsPath: requirements.txt
+run:
+  persistenceMount: /data
+  containerPort: 8100
+  command: uvicorn app.main:app --host 127.0.0.1 --port 8100 --forwarded-allow-ips='10.112.130.20' --proxy-headers

@@ -1,0 +1,52 @@
+<!--!DOCTYPE html-->
+{% extends '/base.html' %}
+{% block content %}
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мини-чат</title>
+    <link rel="stylesheet" type="text/css" href="/static/styles/chat.css">
+</head>
+<body>
+<div class="header-container"><h2>Пользователь: {{ user.name }}</h2></div>
+<div class="chat-container">
+    <div class="user-list" id="userList">
+        <!-- Фиксированные элементы -->
+        <div class="user-item" data-user-id="{{ user.id }}">
+            Личные заметки
+        </div>
+        <div class="user-item" data-user-id="{{ user.id }}">
+            Общий чат
+        </div>
+        <!-- Список пользователей -->
+        {% for chat in users_all %}
+        {% if chat.id != user.id %}
+        <div class="user-item" data-user-id="{{ chat.id }}">
+            {{ chat.name }}
+        </div>
+        {% endif %}
+        {% endfor %}
+    </div>
+    <div class="chat-area">
+        <div class="chat-header" id="chatHeader">
+            <span>Выберите чат</span>
+            <button class="logout-button" id="logoutButton" onclick="logout()">Выход</button>
+        </div>
+        <div class="messages" id="messages">
+            <div class="welcome-message">Выберите собеседника для общения</div>
+        </div>
+        <div class="input-area">
+            <input type="text" id="messageInput" placeholder="Введите сообщение..." disabled>
+            <button id="sendButton" disabled>Отправить</button>
+        </div>
+    </div>
+</div>
+<script>
+    // Передаём идентификатор текущего пользователя в JavaScript
+    const currentUserId = parseInt("{{ user.id }}", 10);
+</script>
+<script src="/static/js/chat.js"></script>
+</body>
+</html>
+{% endblock %}
